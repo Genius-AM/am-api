@@ -10,9 +10,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $products_count = Post::all()->count();
+        $productsts_count = Post::all()->count();
         return view('admin.home.index',[
-            'post_count' => $products_count
+            'productsts_count' => $productsts_count,
 
         ]);
     }
