@@ -13,17 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
-Auth::routes();
+    Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::middleware(['role:admin'])->prefix('admin_panel')->group( function ()
-{
-    Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index']);
+    Route::middleware(['role:admin'])->prefix('admin_panel')->group( function ()
+    {
+        Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('homeAdmin');
 
-});
+        Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
+        Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
+
+    });
