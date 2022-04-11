@@ -115,30 +115,7 @@
                                 <p>Добавить</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('product.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Сданы</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('product.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Ожидание</p>
-                            </a>
-                        </li>
                     </ul>
-
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-edit"></i>
-                            <p>
-                                Формы
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                    </li>
-
 
                 </ul>
             </nav>
@@ -190,8 +167,6 @@
 <script src="/admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/admin/dist/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/admin/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/admin/dist/js/pages/dashboard.js"></script>
 <script src = /admin/admin.js></script>

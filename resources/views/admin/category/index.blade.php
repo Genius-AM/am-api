@@ -31,6 +31,7 @@
                         <th style="width: 20%">
                            Название
                         </th>
+
                     </tr>
                     </thead>
                     @foreach($categories as $category)

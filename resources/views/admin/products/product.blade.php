@@ -31,6 +31,9 @@
                         <th style="width: 20%">
                             Название
                         </th>
+                        <th style="width: 10%">
+                           Категория
+                        </th>
                     </tr>
                     </thead>
                     @foreach($product as $products)
@@ -42,12 +45,16 @@
                             <td>
                                 {{$products ['title']}}
                             </td>
+                            <td>
+                                {{$products ['category']}}
+                            </td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-info btn-sm" href="{{ route('product.edit', $products['id']) }}">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Редактировать
                                 </a>
+
                                 <form action="{{route('product.destroy', $products['id']) }}" method="POST" style="display: inline-block">
                                     @csrf
                                     @method('DELETE')

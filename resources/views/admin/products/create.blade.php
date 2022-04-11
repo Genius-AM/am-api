@@ -35,10 +35,16 @@
                         <label for="exampleInputEmail1">Название книги</label>
                         <input type="text" class="form-control" name="title" id="exampleInputEmail1" placeholder="Название книги" required>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Категория</label>
-                        <input type="text" class="form-control" name="category" id="exampleInputPassword1" placeholder="Категория" required>
-                    </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Выбрать категорию</label>
+                                <select name="category" class="custom-select">
+                                    @foreach($categories as $category)
+                                        <option value="{{$category['id']}}">{{$category['title']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Нажми меня :)</label>
