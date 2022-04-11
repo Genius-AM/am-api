@@ -29,7 +29,7 @@
 
             <form action="{{ route('product.store') }}" method="POST">
                 @csrf
-
+                @method('POST')
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Название книги</label>
@@ -47,7 +47,7 @@
                         </div>
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Нажми меня :)</label>
+                        <label class="form-check-label" for="exampleCheck1" >Нажми меня :)</label >
                     </div>
                 </div>
 
