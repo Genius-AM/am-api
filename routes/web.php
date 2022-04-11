@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
     {
         Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('homeAdmin');
 
-        Route::resource('category', \App\Http\Controllers\Admin\CategoriesController::class);
+        Route::resource('categories',\App\Http\Controllers\Admin\CategoriesController::class);
         Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
 
     });

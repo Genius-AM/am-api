@@ -82,25 +82,25 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('category.index') }}" class="nav-link active">
+                                <a href="{{ route('categories.index') }}" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Фентази</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('category.index') }}" class="nav-link">
+                                <a href="{{ route('categories.index') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Драмы</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('category.index') }}" class="nav-link">
+                                <a href="{{ route('categories.index') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Истории</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('category.create') }}" class="nav-link">
+                                <a href="{{ route('categories.create') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Добавить категорию</p>
                                 </a>

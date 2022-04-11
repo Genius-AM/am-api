@@ -16,10 +16,5 @@ class HomeController extends Controller
             'productsts_count' => $productsts_count,
 
         ]);
-
-        $users_count = Users::all()->count();
-        return view('admin.home.index', [
-            'users_count' => $users_count,
-        ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Categories;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -36,9 +37,9 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        $new_category = new Category();
-        $new_category->title = $request->title;
-        $new_category->save();
+        $new_categories = new Categories();
+        $new_categories->title = $request->title;
+        $new_categories->save();
 
         return redirect()->back()->withSuccess('Категория была успешно добавлена!');
 
