@@ -43,12 +43,12 @@
                                 {{$products ['title']}}
                             </td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="{{route('product.edit', $product ['id'])}}">
+                                <a class="btn btn-info btn-sm" href="{{ route('product.edit', $products['id']) }}">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Редактировать
                                 </a>
-                                <form action="{{route('product.destroy', $product['id']) }}" method="POST" style="display: inline-block">
+                                <form action="{{route('product.destroy', $products['id']) }}" method="POST" style="display: inline-block">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm delete-btn">
