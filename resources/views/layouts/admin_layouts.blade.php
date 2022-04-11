@@ -84,19 +84,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('categories.index') }}" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Фентази</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('categories.index') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Драмы</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('categories.index') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Истории</p>
+                                    <p>Все категории</p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -115,6 +103,12 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('product.index') }}" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Все книги</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="{{ route('product.create') }}" class="nav-link active">
                                 <i class="far fa-circle nav-icon"></i>

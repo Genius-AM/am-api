@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('category');
-            $table->text('product_id')->unsigned();
+            $table->id('product_id')->unsigned();
             $table->timestamps();
         });
     }
