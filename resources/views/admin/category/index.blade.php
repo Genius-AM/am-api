@@ -29,41 +29,40 @@
                             ID
                         </th>
                         <th style="width: 20%">
-                            Название
+                           Название
                         </th>
                     </tr>
                     </thead>
+                    @foreach($categories as $category)
                     <tbody>
-
-                    <tr>
-                        <td>
-                            #
-                        </td>
+                        <tr>
                             <td>
-
-                                <a>
-                                    AdminLTE
-                                </a>
+                                {{$category ['id']}}
                             </td>
-                        <td>
-
-                        <td class="project-actions text-right">
-                            <a class="btn btn-info btn-sm" href="#">
-                                <i class="fas fa-pencil-alt">
-                                </i>
-                               Редактировать
-                            </a>
-                            <a class="btn btn-danger btn-sm" href="#">
-                                <i class="fas fa-trash">
-                                </i>
-                                Удалить
-                            </a>
-                        </td>
-                    </tr>
+                            <td>
+                               {{$category ['title']}}
+                            </td>
+                            <td class="project-actions text-right">
+                                <a class="btn btn-info btn-sm" href="{{ route( 'categories.edit' , $category['id']) }}">
+                                    <i class="fas fa-pencil-alt">
+                                    </i>
+                                   Редактировать
+                                </a>
+                               <form action="{{route('categories.destroy', $category['id']) }}" method="POST" style="display: inline-block">
+                                   @csrf
+                                   @method('DELETE')
+                                   <button type="submit" class="btn btn-danger btn-sm delete-btn">
+                                       <i class="fas fa-trash">
+                                       </i>
+                                       Удалить
+                                   </button>
+                               </form>
+                            </td>
+                        </tr>
                     </tbody>
+                    @endforeach
                 </table>
             </div>
-
         </div>
     </section>
     <!-- /.content -->

@@ -12,17 +12,22 @@ class CategoriesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        return view('admin.category.index');
+        $categories = Category::orderBy('created_at', 'desc')->get();
+
+        return view('admin.category.index',
+        [
+            'categories' => $categories,
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -61,11 +66,14 @@ class CategoriesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.category.edit', [
+            'category' => $category,
+        ]);
+
     }
 
     /**
@@ -77,7 +85,10 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->title = $request->title;
+        $category->save();
+
+        return redirect()->back()->withSuccess('Категория была успешно обновлена');
     }
 
     /**
@@ -88,6 +99,8 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->back()->withSuccess('Категория была успешно удалена!');
     }
 }
