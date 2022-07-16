@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 
     Auth::routes();
 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/{any}', [App\Http\Controllers\HomeController::class, 'index'])->where('any', '.*');
+
 
 
     Route::middleware(['role:admin'])->prefix('admin_panel')->group( function ()
