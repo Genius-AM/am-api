@@ -12,6 +12,7 @@ import App from "./components/App";
 import Home from "./components/Home";
 import Desks from "./components/Desk/Desks";
 import ShowDesk from "./components/Desk/ShowDesk";
+import Information from "./components/Information";
 
 
 
@@ -19,7 +20,7 @@ const router = new VueRouter({
     mode: 'history',
     routes: [
         {
-            path: '/',
+            path: '/index',
             name: 'home',
             component: Home
         },
@@ -27,6 +28,11 @@ const router = new VueRouter({
             path: '/desks',
             name: 'desks',
             component: Desks
+        },
+        {
+            path: '/info',
+            name: 'info',
+            component: Information
         },
         {
             path: '/desks/:deskId',

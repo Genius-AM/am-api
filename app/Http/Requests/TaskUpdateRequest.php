@@ -26,6 +26,7 @@ class TaskUpdateRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'is_done' => 'required|boolean',
+            'description' => 'required|max:255',
             'card_id' => 'required|integer|exists:cards,id'
         ];
     }

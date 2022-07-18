@@ -8,7 +8,7 @@
         <form @submit.prevent="addNewDesk">
             <div class="form-group">
                 <label class="form-label mt-3">Добавление доски</label>
-                    <input type="text" v-model="name" @blur="addNewDesk" placeholder="Введите название доски" class="form-control " :class="{ 'is-invalid': $v.name.$error }">
+                    <input type="text" v-model="name" @blur="addNewDesk" style="width:200px;" placeholder="Введите название доски" size="5" class="form-control w-25" :class="{ 'is-invalid': $v.name.$error }">
                 <div class="invalid-feedback" v-if="!$v.name.required">
                     Обязательное поле
                 </div>
@@ -20,14 +20,14 @@
                 {{errors[0]}}
                 </div>
             </div>
-            <button type="button" class="btn btn-primary mb-3">Создать</button>
+<!--            <button type="button" class="btn btn-primary mt-3">Создать</button>-->
         </form>
 
         <div class="row">
             <div class="col-lg-3" v-for="desk in desks">
-                <div class="card mt-3">
+                <div class="card mt-5">
                     <router-link class="card-body" :to="{name: 'showDesk', params: {deskId: desk.id }}">
-                        <h4 class="card-title d-flex justify-content-between align-items-center desk-name" style="color: black">{{desk.name}}</h4>
+                        <h4 class="card-title d-flex justify-content-between align-items-center desk-name" target="_blank" style="color: black; text-decoration: none;">{{desk.name}}</h4>
                     </router-link>
                     <button type="submit" class="btn btn-danger" @click="deleteDesk(desk.id)">Удалить</button>
                 </div>

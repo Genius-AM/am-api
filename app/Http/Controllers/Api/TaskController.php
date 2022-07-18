@@ -19,7 +19,19 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        return TaskResource::collection();
+    }
+
+    /**
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
+    {
+        $new_description = Task::create($request->validated());
+
+        return new TaskResource($new_description);
     }
 
     /**

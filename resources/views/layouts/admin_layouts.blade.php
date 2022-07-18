@@ -38,7 +38,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="{{route('homeAdmin')}}" class="brand-link">
+        <a href="" class="brand-link">
             <img src="/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">Админ-панель</span>
         </a>
@@ -51,21 +51,11 @@
                     <img src="/admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                    <a href="{{route('personal.index')}}" class="d-block">{{ Auth::user()->name }}</a>
                 </div>
             </div>
 
             <!-- SidebarSearch Form -->
-<!--            <div class="form-inline">
-                <div class="input-group" data-widget="sidebar-search">
-                    <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-sidebar">
-                            <i class="fas fa-search fa-fw"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>-->
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
@@ -82,41 +72,30 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('categories.index') }}" class="nav-link active">
+                                <a href="" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Все категории</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('categories.create') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Добавить категорию</p>
+                                    <p>Доски</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
 
+                    <li class="nav-item menu-open">
                     <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p> Книги
+                        <p> Пользователи
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('product.index') }}" class="nav-link active">
+                            <a href="{{route('users')}}" class="nav-link active">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Все книги</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('product.create') }}" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Добавить</p>
+                                <p>Все пользователи</p>
                             </a>
                         </li>
                     </ul>
-
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
