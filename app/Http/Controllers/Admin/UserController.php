@@ -3,40 +3,33 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class ProductController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $product = Product::orderBy('created_at', 'desc')->get();
+        $users = User::all();
 
-        return view('admin.products.product', [
-            'product' => $product,
-            ]);
+        return view('admin.users.index', ['users' => $users]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        $categories = Category::orderBy('created_at', 'desc')->get();
-
-        return view('admin.products.create', [
-
-            'categories'=>$categories,
-
-        ]);
+        //
     }
 
     /**
@@ -47,12 +40,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $new_product = new Product();
-        $new_product->title = $request->title;
-        $new_product->category = $request->category;
-        $new_product->save();
-
-        return redirect()->back()->withSuccess('Категория была успешно добавлена!');
+        //
     }
 
     /**
@@ -70,13 +58,11 @@ class ProductController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Models\Product  $product
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\Response
      */
     public function edit(Product $product)
     {
-        return view('admin.product.edit', [
-            'product' => $product,
-        ]);
+        //
     }
 
     /**
@@ -88,10 +74,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $product->title = $request->title;
-        $product->save();
-
-
+        //
     }
 
     /**
@@ -102,6 +85,6 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->delete();
+        //
     }
 }

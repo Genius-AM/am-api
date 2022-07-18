@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Admin\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,22 +14,26 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-    Auth::routes();
-
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::redirect('/', '/index')->middleware('auth');
 
 
-    Route::middleware(['role:admin'])->prefix('admin_panel')->group( function ()
-    {
-        Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('homeAdmin');
+Route::prefix('user')->group(function (){
+    Route::resource('personal', UserController::class);
+});
 
-        Route::resource('categories',\App\Http\Controllers\Admin\CategoriesController::class);
-        Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
+Route::group(['middleware' => ['role:admin']], function (){
+    Route::get('/admin-panel', [AdminController::class , 'index']);
+    Route::get('/all-users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users');
+});
 
-    });
+
+// Не удалять т.к это используется для построения роутов SPA приложения
+Route::get('/{any}', [App\Http\Controllers\HomeController::class, 'index'])->where('any', '.*');
+
 
