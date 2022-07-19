@@ -22,15 +22,15 @@ Route::get('/', function () {
 
 Route::redirect('/', '/index')->middleware('auth');
 
+Route::group(['middleware' => ['role:admin']], function (){
+    Route::get('/admin-panel', [AdminController::class , 'index']);
+    Route::get('/all-users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users');
+});
 
 Route::prefix('user')->group(function (){
     Route::resource('personal', UserController::class);
 });
 
-Route::group(['middleware' => ['role:admin']], function (){
-    Route::get('/admin-panel', [AdminController::class , 'index']);
-    Route::get('/all-users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users');
-});
 
 
 // Не удалять т.к это используется для построения роутов SPA приложения
