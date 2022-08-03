@@ -49,7 +49,9 @@ export default {
             errored: false,
             loading: true,
             name: null,
-            errors: []
+            errors: [],
+            user_id: this.$userId,
+
         }
     },
     mounted() {
@@ -100,6 +102,7 @@ export default {
                 .then(response => {
                     this.name = ''
                     this.desks = []
+                    console.log(this.$userId)
                     this.getAllDesk()
                 })
                 .catch(error => {
