@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="/admin/plugins/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/admin/dist/css/adminlte.min.css">
+
+    <link rel="stylesheet" href="/admin/dist/css/all.min.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
@@ -38,8 +40,8 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="" class="brand-link">
-            <img src="/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <a href="{{ route('admin-panel') }}" class="brand-link">
+            <img src="{{asset('images/Am-logo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">Админ-панель</span>
         </a>
 
@@ -98,6 +100,141 @@
                     </li>
                 </ul>
             </nav>
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+                         with font-awesome or any other icon font library -->
+                    <li class="nav-item">
+                        <a href="{{ route('admin.widget') }}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Widgets
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-header">EXAMPLES</li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-search"></i>
+                            <p>
+                                Search
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/search/simple.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Simple Search</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/search/enhanced.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Enhanced</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-header">MISCELLANEOUS</li>
+                    <li class="nav-item">
+                        <a href="iframe.html" class="nav-link">
+                            <i class="nav-icon fas fa-ellipsis-h"></i>
+                            <p>Tabbed IFrame Plugin</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://adminlte.io/docs/3.1/" class="nav-link">
+                            <i class="nav-icon fas fa-file"></i>
+                            <p>Documentation</p>
+                        </a>
+                    </li>
+                    <li class="nav-header">MULTI LEVEL EXAMPLE</li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-circle nav-icon"></i>
+                            <p>Level 1</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-circle"></i>
+                            <p>
+                                Level 1
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Level 2</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Level 2
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Level 3</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Level 3</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Level 3</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Level 2</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-circle nav-icon"></i>
+                            <p>Level 1</p>
+                        </a>
+                    </li>
+                    <li class="nav-header">LABELS</li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-circle text-danger"></i>
+                            <p class="text">Important</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-circle text-warning"></i>
+                            <p>Warning</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-circle text-info"></i>
+                            <p>Informational</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
             <!-- /.sidebar-menu -->
         </div>
         <!-- /.sidebar -->
@@ -148,7 +285,11 @@
 <script src="/admin/dist/js/adminlte.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/admin/dist/js/pages/dashboard.js"></script>
+
 <script src = /admin/admin.js></script>
+
+<script src="{{ asset('admin/plugins/fullcalendar/main.js/main.min.js') }}"></script>
+
 </body>
 </html>
 
