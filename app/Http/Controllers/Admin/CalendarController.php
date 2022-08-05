@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 
 class CalendarController extends Controller
 {
-    public function index(): view
+    public function index()
     {
         return view('admin.calendar');
     }
