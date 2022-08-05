@@ -112,6 +112,14 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.calendar') }}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Widgets
+                            </p>
+                        </a>
+                    </li>
                     <li class="nav-header">EXAMPLES</li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
