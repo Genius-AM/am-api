@@ -100,6 +100,8 @@
                                             <div class="form-group" >
                                                 <label class="col-form-label">Добавление task</label>
                                                 <input type="text" v-model="new_task_name" placeholder="Введите название задачи" class="form-control" :class="{ 'is-invalid': $v.new_task_name.$error }">
+
+                                                <input type="text" v-model="description_task" placeholder="Введите текст" class="form-control mt-2" :class="{ 'is-invalid': $v.description_task.$error }">
                                                 <div class="invalid-feedback" v-if="!$v.new_task_name.required">
                                                     Обязательное поле
                                                 </div>
@@ -111,6 +113,7 @@
                                                     {{errors[0]}}
                                                 </div>
                                             </div>
+                                            <button type="submit" class="btn btn-primary">Отправить</button>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
@@ -156,7 +159,7 @@ export default {
             current_card: [],
             show_card_name_input: false,
             new_task_name: '',
-            description: '',
+            description_task: '',
             task_input_name_id: null,
         }
     },
@@ -194,11 +197,12 @@ export default {
         addNewTask(){
             axios.post('/api/tasks', {
                 name: this.new_task_name,
+                description: this.description_task,
                 card_id: this.current_card.id,
             })
                 .then(response => {
-                    console.log(response.data.data)
                     this.new_task_name = ''
+                    this.description_task = ''
                     this.getCard(this.current_card.id)
                 })
                 .catch(error => {
@@ -378,7 +382,7 @@ export default {
     mounted() {
         axios.get('/api/desks/' + this.deskId)
             .then(response => {
-                this.name = response.data.data.name
+
             })
             .catch(error => {
                 console.log(error)
@@ -413,6 +417,10 @@ export default {
         new_task_name:{
             required,
             maxLength: maxLength(255)
+        },
+        description_task:{
+          required,
+          maxLength: maxLength(255)
         },
         desk_lists: {
             $each: {

@@ -26,6 +26,7 @@ class TaskStoreRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'card_id' => 'required|integer|exists:cards,id',
+            'description' => 'required|max:255',
         ];
     }
 }
