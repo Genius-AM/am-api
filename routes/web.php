@@ -35,9 +35,6 @@ Route::group(['middleware' => ['role:admin']], function (){
 
 Route::prefix('user')->group(function (){
     Route::resource('personal', UserController::class);
-    Route::get('/home', function (){
-        return view('home');
-    });
 });
 
 
