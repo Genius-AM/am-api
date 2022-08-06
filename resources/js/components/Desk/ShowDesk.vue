@@ -93,13 +93,16 @@
                                             <form @submit.prevent="updateTask(current_card.tasks[index])" v-if="task_input_name_id == task.id">
                                                 <input type="text" v-model="current_card.tasks[index].name" v-if="task_input_name_id == task.id" class="form-control" placeholder="Изменить название tasks">
                                             </form>
-                                            <label v-else class="form-check-label" :for="'inlineCheckbox1' + index">{{task.name}} </label> <span @click="task_input_name_id = task.id" v-if="task_input_name_id != task.id"> <i class="fa-solid fa-pencil ml-3 " style="cursor: pointer; font-size: 15px;"></i></span>
+                                            <label v-else class="form-check-label" :for="'inlineCheckbox1' + index">{{task.name}} </label> <span @click="task_input_name_id = task.id" v-if="task_input_name_id != task.id"> <i class="fa-solid fa-pencil ml-3 " style="cursor: pointer; font-size: 15px;"></i><button type="button" class="btn btn-primary mt-1 ml-mr-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Посмотреть</button></span>
+                                            <label class="form-check-label">{{task.description}}</label>
                                             <button type="button" @click="deleteTask(task.id)" class="btn-close" aria-label="Close"></button>
                                         </div>
                                         <form @submit.prevent="addNewTask" class="mt-3">
                                             <div class="form-group" >
                                                 <label class="col-form-label">Добавление task</label>
                                                 <input type="text" v-model="new_task_name" placeholder="Введите название задачи" class="form-control" :class="{ 'is-invalid': $v.new_task_name.$error }">
+
+                                                <input type="text" v-model="description_task" placeholder="Введите текст" class="form-control mt-2" :class="{ 'is-invalid': $v.description_task.$error }">
                                                 <div class="invalid-feedback" v-if="!$v.new_task_name.required">
                                                     Обязательное поле
                                                 </div>
@@ -111,6 +114,7 @@
                                                     {{errors[0]}}
                                                 </div>
                                             </div>
+                                            <button type="submit" class="btn btn-primary mt-2">Отправить</button>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
@@ -156,7 +160,7 @@ export default {
             current_card: [],
             show_card_name_input: false,
             new_task_name: '',
-            description: '',
+            description_task: '',
             task_input_name_id: null,
         }
     },
@@ -194,11 +198,12 @@ export default {
         addNewTask(){
             axios.post('/api/tasks', {
                 name: this.new_task_name,
+                description: this.description_task,
                 card_id: this.current_card.id,
             })
                 .then(response => {
-                    console.log(response.data.data)
                     this.new_task_name = ''
+                    this.description_task = ''
                     this.getCard(this.current_card.id)
                 })
                 .catch(error => {
@@ -231,7 +236,6 @@ export default {
             axios.get('/api/cards/' + id)
                 .then(response => {
                     this.current_card = response.data.data
-                    console.log(this.current_card)
                 })
                 .catch(error => {
                     console.log(error)
@@ -378,7 +382,7 @@ export default {
     mounted() {
         axios.get('/api/desks/' + this.deskId)
             .then(response => {
-                this.name = response.data.data.name
+
             })
             .catch(error => {
                 console.log(error)
@@ -413,6 +417,10 @@ export default {
         new_task_name:{
             required,
             maxLength: maxLength(255)
+        },
+        description_task:{
+          required,
+          maxLength: maxLength(255)
         },
         desk_lists: {
             $each: {

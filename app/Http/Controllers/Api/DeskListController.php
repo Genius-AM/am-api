@@ -12,11 +12,7 @@ use Illuminate\Http\Response;
 
 class DeskListController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @param Request $request
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
-     */
+
     public function index(Request $request)
     {
         $request->validate([
@@ -30,12 +26,7 @@ class DeskListController extends Controller
         );
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return DeskListResource
-     */
+
     public function store(DeskListStoreRequest $request)
     {
         $created_desk_list = DeskList::create($request->validated());
@@ -43,24 +34,13 @@ class DeskListController extends Controller
         return new DeskListResource($created_desk_list);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(DeskListUpdateRequest $request, DeskList $deskList)
     {
         $deskList->update($request->validated());
@@ -68,12 +48,7 @@ class DeskListController extends Controller
         return new DeskListResource($deskList);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(DeskList $deskList)
     {
         $deskList->delete();

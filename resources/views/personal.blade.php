@@ -5,13 +5,6 @@
         <div class="row">
             <div class="card">
                 <div class="card-title">
-                    <div class="col-lg-10">
-                        <div class="user-info-id">
-                            <h4>ID-пользователя</h4>
-                            {{$user->id}}
-                        </div>
-                    </div>
-                    <br>
                     <div class="col-lg-3">
                         <div class="user-info-box">
                             <h4>Должность:</h4>
@@ -50,7 +43,6 @@
                             <input class="form-control mt-2 ml-3" name="name" align="middle" type="text" placeholder="{{$user->name}}" required style="width: 260px">
                             <input class="form-control mt-2" name="last_name" type="text" placeholder="{{$user->last_name}}" required style="width: 260px">
                             <input class="form-control mt-2" name="email" type="email" placeholder="{{$user->email}}" style="width: 260px">
-
 
                             <button type="submit" class="btn btn-primary mt-3">Изменить</button>
                         </form>
