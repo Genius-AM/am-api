@@ -48,6 +48,7 @@ class DeskListController extends Controller
         return new DeskListResource($deskList);
     }
 
+
     public function destroy(DeskList $deskList)
     {
         $deskList->delete();
