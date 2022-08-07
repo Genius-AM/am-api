@@ -24,7 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::redirect('/', '/index')->middleware('auth');
+Route::redirect('/', '/desks')->middleware('auth');
 
 Route::group(['middleware' => ['role:admin']], function (){
     Route::get('/admin-panel', [AdminController::class , 'index'])->name('admin-panel');
