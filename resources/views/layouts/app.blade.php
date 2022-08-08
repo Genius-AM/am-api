@@ -89,9 +89,11 @@
             </div>
         </nav>
         <main class="py-4">
-            @yield('content')
-            <div id="app">
-                <app></app>
+            <div class="container">
+                @yield('content')
+                <div id="app">
+                    <app></app>
+                </div>
             </div>
         </main>
     </div>
