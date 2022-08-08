@@ -40,9 +40,6 @@
                     @if(Auth::user())
                     <ul class="navbar-nav me-auto">
                         <div class="navbar-nav">
-                            <router-link class="nav-link nav-item" :to="{name: 'home'}" style="color: rgb(90, 90, 90)">Главная</router-link>
-                        </div>
-                        <div class="navbar-nav">
                             <router-link class="nav-link nav-item" :to="{name: 'desks'}" style="color: rgb(90, 90, 90)" >Задачи</router-link>
                         </div>
                         <div class="navbar-nav">
@@ -92,9 +89,11 @@
             </div>
         </nav>
         <main class="py-4">
-            @yield('content')
-            <div id="app">
-                <app></app>
+            <div class="container">
+                @yield('content')
+                <div id="app">
+                    <app></app>
+                </div>
             </div>
         </main>
     </div>
