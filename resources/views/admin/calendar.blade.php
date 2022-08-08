@@ -35,6 +35,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Create Event</h3>
                         </div>
+                        <form action="" method="post">
                         <div class="card-body">
                             <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
                                 <ul class="fc-color-picker" id="color-chooser">
@@ -47,7 +48,7 @@
                             </div>
                             <!-- /btn-group -->
                             <div class="input-group">
-                                <input id="new-event" type="text" class="form-control" placeholder="Event Title">
+                                <input id="new-event" name="event" type="text" class="form-control" placeholder="Event Title">
 
                                 <div class="input-group-append">
                                     <button id="add-new-event" type="button" class="btn btn-primary">Add</button>
@@ -56,6 +57,7 @@
                             </div>
                             <!-- /input-group -->
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
