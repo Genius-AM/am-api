@@ -32,6 +32,7 @@ Route::group(['middleware' => ['role:admin']], function (){
     Route::get('/widgets', [WidgetController::class, 'index'])->name('admin.widget');
     Route::get('admin/desks', [DeskController::class, 'index'])->name('admin.desks');
     Route::get('/calendar', [CalendarController::class, 'index'])->name('admin.calendar');
+    Route::get('/calendar/store', [CalendarController::class, 'store'])->name('calendar.store');
 });
 
 Route::prefix('user')->group(function (){
