@@ -19,9 +19,9 @@ class UserController extends Controller
     }
 
 
-    public function create()
+    public function create(Request $request, User $user)
     {
-        //
+
     }
 
 
@@ -51,6 +51,7 @@ class UserController extends Controller
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
 
+       // $user->avatar = $request->file('image')->store('avatar', 'public');
         $user->update();
 
         return redirect()->back();
@@ -60,5 +61,16 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function uploadAvatar(Request $request, User $user)
+    {
+        $id = Auth::id();
+        $user = User::findOrFail($id);
+        $user->avatar = $request->file('image')->store('avatar', 'public');
+
+        $user->save();
+
+        return redirect()->back();
     }
 }

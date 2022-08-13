@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('tasks', function (Blueprint $table) {
-                $table->boolean('is_done')->default(0);
+        Schema::table('users', function (Blueprint $table){
+            $table->string('avatar')->default('null');
         });
     }
 
@@ -25,8 +25,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->dropColumn('is_done');
-        });
+        //
     }
 };

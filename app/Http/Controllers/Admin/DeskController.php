@@ -11,9 +11,4 @@ class DeskController extends Controller
     {
         return view('admin.Desk.desks');
     }
-
-    public function store(Request $request)
-    {
-
-    }
 }

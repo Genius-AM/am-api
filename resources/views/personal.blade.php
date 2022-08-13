@@ -6,7 +6,12 @@
             <div class="card">
                 <div class="card-title">
                     <div class="col-lg-3">
-                        <div class="user-info-box">
+                        <div class="user-info-box mt-2">
+                           <td><img src="{{\Illuminate\Support\Facades\Storage::url($user->avatar)}}" height="180px">
+                            </td>
+
+                        </div>
+                        <div class="user-info-box mt-2">
                             <h4>Должность:</h4>
                             {{$user->JobTitle}}
                         </div>
@@ -43,10 +48,20 @@
                             <input class="form-control mt-2 ml-3" name="name" align="middle" type="text" placeholder="{{$user->name}}" required style="width: 260px">
                             <input class="form-control mt-2" name="last_name" type="text" placeholder="{{$user->last_name}}" required style="width: 260px">
                             <input class="form-control mt-2" name="email" type="email" placeholder="{{$user->email}}" style="width: 260px">
+                            <input class="form-control mt-2 ml-3" name="image" align="middle" type="file" style="width: 260px">
 
                             <button type="submit" class="btn btn-primary mt-3">Изменить</button>
                         </form>
-
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Добавить фото</h4>
+                                <form class="mt-5" method="post" action="{{ route('avatar.install') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <input class="form-control mt-2 ml-3" name="image" align="middle" type="file" style="width: 260px">
+                                    <button type="submit" class="btn btn-primary mt-3">Добавить</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
