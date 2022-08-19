@@ -6,11 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CalendarRequest;
 use App\Http\Resources\CalendarResource;
 use App\Models\Calendar;
-use Illuminate\Http\Request;
 
 class CalendarController extends Controller
 {
-    public function index()
+    public function WithDraw()
     {
         $events = Calendar::all();
 
@@ -18,7 +17,7 @@ class CalendarController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function storeNewEvent(CalendarRequest $request)
     {
         $event = new Calendar();
         $event->event = $request->input('event');

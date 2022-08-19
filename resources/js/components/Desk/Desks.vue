@@ -25,7 +25,7 @@
 
         <div class="row">
             <div class="col-lg-3" v-for="desk in desks">
-                <div class="card mt-5">
+                <div class="card mt-5 ">
                     <router-link class="card-body" :to="{name: 'showDesk', params: {deskId: desk.id }}">
                         <h4 class="card-title d-flex justify-content-between align-items-center desk-name" target="_blank" style="color: black; text-decoration: none;">{{desk.name}}</h4>
                     </router-link>
@@ -50,7 +50,6 @@ export default {
             loading: true,
             name: null,
             errors: [],
-            user_id: this.$userId,
 
         }
     },
@@ -62,7 +61,6 @@ export default {
             axios.get('/api/desks')
                 .then(response => {
                     this.desks = response.data.data
-
                 })
                 .catch(error => {
                     console.log(error)
@@ -97,12 +95,11 @@ export default {
             }
             axios.post('/api/desks/' , {
                 name: this.name,
-
             })
                 .then(response => {
                     this.name = ''
                     this.desks = []
-                    console.log(this.$userId)
+                    console.log(response.data)
                     this.getAllDesk()
                 })
                 .catch(error => {

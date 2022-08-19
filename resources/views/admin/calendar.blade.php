@@ -17,7 +17,7 @@
                         @foreach($events as $event)
                             <!-- the events -->
                             <div id="external-events">
-                                <div class="external-event bg-success">{{$event['event']}}</div>
+                                <div class="external-event bg-success">{{ $event->event }}</div>
                             </div>
                             @endforeach
                         </div>
@@ -29,7 +29,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Название заметки</h3>
                         </div>
-                        <form action="{{route('calendar.store')}}" method="get">
+                        <form action="{{ route('calendar.add') }}" method="post">
                                 <div class="card-body">
                                     <div class="input-group">
                                         <input id="new-event" name="event" type="text" class="form-control" placeholder="Название ">

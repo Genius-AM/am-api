@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -14,6 +15,8 @@ class UserController extends Controller
     {
         $id = Auth::id();
         $user = User::findOrFail($id);
+
+        Log::info('Entered user.', ['id' => $user->id, 'name' => $user->name]);
 
         return view('personal', ['user' => $user]);
     }
@@ -33,7 +36,9 @@ class UserController extends Controller
 
     public function show($id)
     {
-        //
+        Log::info($id);
+
+        $message = User::findOrFail($id);
     }
 
 

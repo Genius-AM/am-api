@@ -3,9 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @if (Auth::check())
-        <meta name="user_id" content="{{ Auth::user()->id }}" />
-@endif
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -72,6 +69,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="nav-link nav-item" href="{{route('personal.index')}}" style="color: rgb(90, 90, 90)">Личный кабинет</a>
+                                    <a class="nav-link nav-item" href="{{route('des')}}" style="color: rgb(90, 90, 90)">desk</a>
                                     <router-link class="nav-link nav-item" :to="{name: 'desks'}" style="color: rgb(90, 90, 90)">Доски</router-link>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
