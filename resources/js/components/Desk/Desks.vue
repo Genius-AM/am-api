@@ -73,7 +73,7 @@ export default {
         deleteDesk(id){
             if(confirm('Вы хотите удалить desk?')){
                 axios.post('/api/desks/' + id, {
-                    _method: 'DELETE'
+                    _method: 'DELETE',
                 })
                     .then(response => {
                         this.desks = []
