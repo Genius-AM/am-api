@@ -16,7 +16,6 @@ class UserController extends Controller
         $id = Auth::id();
         $user = User::findOrFail($id);
 
-        Log::info('Entered user.', ['id' => $user->id, 'name' => $user->name]);
 
         return view('personal', ['user' => $user]);
     }
@@ -36,9 +35,7 @@ class UserController extends Controller
 
     public function show($id)
     {
-        Log::info($id);
 
-        $message = User::findOrFail($id);
     }
 
 
@@ -56,7 +53,8 @@ class UserController extends Controller
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
 
-       // $user->avatar = $request->file('image')->store('avatar', 'public');
+        Log::info('Update user:',['name' => $user->full_name, 'id' => $user->id]);
+        //$user->avatar = $request->file('image')->store('avatar', 'public');
         $user->update();
 
         return redirect()->back();

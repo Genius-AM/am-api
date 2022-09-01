@@ -29,7 +29,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Название заметки</h3>
                         </div>
-                        <form action="{{ route('calendar.add') }}" method="post">
+                        <form action="{{ route('calendar.add') }}" method="get">
                                 <div class="card-body">
                                     <div class="input-group">
                                         <input id="new-event" name="event" type="text" class="form-control" placeholder="Название ">

@@ -93,8 +93,9 @@
                                             <form @submit.prevent="updateTask(current_card.tasks[index])" v-if="task_input_name_id == task.id">
                                                 <input type="text" v-model="current_card.tasks[index].name" v-if="task_input_name_id == task.id" class="form-control" placeholder="Изменить название tasks">
                                             </form>
-                                            <label v-else class="form-check-label" :for="'inlineCheckbox1' + index">{{task.name}} </label> <span @click="task_input_name_id = task.id" v-if="task_input_name_id != task.id"> <i class="fa-solid fa-pencil ml-3 " style="cursor: pointer; font-size: 15px;"></i><button type="button" class="btn btn-primary mt-1 ml-mr-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Посмотреть</button></span>
+                                            <label v-else class="form-check-label" :for="'inlineCheckbox1' + index">{{task.name}} </label> <span @click="task_input_name_id = task.id" v-if="task_input_name_id != task.id"></span>
                                             <label class="form-check-label">{{task.description}}</label>
+                                            <i class="fa-solid fa-pencil ml-3 " style="cursor: pointer; font-size: 15px;"></i>
                                             <button type="button" @click="deleteTask(task.id)" class="btn-close" aria-label="Close"></button>
                                         </div>
                                         <form @submit.prevent="addNewTask" class="mt-3">

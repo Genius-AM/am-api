@@ -11,14 +11,25 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 
 class DeskController extends Controller
 {
-    public function Widg()
+    const MIN_INT_COD = 111111;
+    const MAX_ITN_COD = 999999;
+
+    public function Withdraw(Request $request)
     {
         $desks = Desk::all();
 
-        return view('desks.desk', compact('desks'));
+        $mes = rand(self::MIN_INT_COD, self::MAX_ITN_COD);
+        $session = Session::put('SmsCode', $mes);
+
+        foreach ($desks as $desk){
+            Log::info('Заход на страницу и прогрузка всех досок', ['name' => $desk->name]);
+        }
+
+        return view('desks.desk', compact('desks', 'mes'));
     }
 
     public function index()
@@ -49,9 +60,6 @@ class DeskController extends Controller
     }
 
 
-
-
-
     public function update(DeskStoreRequest $request, Desk $desk)
     {
         $desk->update($request->validated());
@@ -67,14 +75,19 @@ class DeskController extends Controller
         return response(null, Response::HTTP_NO_CONTENT);
     }
 
+
     public function desk(Desk $desk, Request $request)
     {
-        $desk->user_id = $request->user()->id;
-        $desk->name = $request->input('name');
-        //dd($desk);
+        $user_id = Auth::id();
 
-        $desk->save();
+            $desk->user_id = $user_id;
+            $desk->name = $request->input('name');
+
+            $desk->save();
+
 
         return redirect()->back();
     }
+
+
 }

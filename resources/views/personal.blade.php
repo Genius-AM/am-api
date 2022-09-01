@@ -13,6 +13,10 @@
                         </div>
                         <div class="user-info-box mt-2">
                             <h4>Должность:</h4>
+                            {{ $user->id }}
+                        </div>
+                        <div class="user-info-box mt-2">
+                            <h4>Должность:</h4>
                             {{$user->JobTitle}}
                         </div>
                         <br>
@@ -41,8 +45,8 @@
                         <h5 class="modal-title" id="exampleModalLabel">{{$user->name}}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <form class="form-group mt-1" method="post" enctype="multipart/form-data" action="{{ url('user/personal/{personal}') }}">
+                    <br class="modal-body">
+                        <form class="form-group mt-1 ml-lg-5" method="post" enctype="multipart/form-data" action="{{ url('user/personal/{personal}') }}">
                             @csrf
                             @method('PUT')
                             <input class="form-control mt-2 ml-3" name="name" align="middle" type="text" placeholder="{{$user->name}}" required style="width: 260px">
@@ -52,7 +56,8 @@
 
                             <button type="submit" class="btn btn-primary mt-3">Изменить</button>
                         </form>
-                        <div class="card">
+
+                        <div class="card mt-5">
                             <div class="card-body">
                                 <h4>Добавить фото</h4>
                                 <form class="mt-5" method="post" action="{{ route('avatar.install') }}" enctype="multipart/form-data">
