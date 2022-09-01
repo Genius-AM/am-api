@@ -12,50 +12,33 @@
                         <div class="card-header">
                             <h4 class="card-title">Перетаскиваемые события</h4>
                         </div>
+
                         <div class="card-body">
+                        @foreach($events as $event)
                             <!-- the events -->
                             <div id="external-events">
-                                <div class="external-event bg-success">Обед</div>
-                                <div class="external-event bg-warning">идти домой</div>
-                                <div class="external-event bg-info">Do homework</div>
-                                <div class="external-event bg-primary">Работа над дизайном пользовательского интерфейса</div>
-                                <div class="external-event bg-danger">Sleep tight</div>
-                                <div class="checkbox">
-                                    <label for="drop-remove">
-                                        <input type="checkbox" id="drop-remove">
-                                        удалить после падения
-                                    </label>
-                                </div>
+                                <div class="external-event bg-success">{{ $event->event }}</div>
                             </div>
+                            @endforeach
                         </div>
+
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Create Event</h3>
+                            <h3 class="card-title">Название заметки</h3>
                         </div>
-                        <div class="card-body">
-                            <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
-                                <ul class="fc-color-picker" id="color-chooser">
-                                    <li><a class="text-primary" href="#"><i class="fas fa-square"></i></a></li>
-                                    <li><a class="text-warning" href="#"><i class="fas fa-square"></i></a></li>
-                                    <li><a class="text-success" href="#"><i class="fas fa-square"></i></a></li>
-                                    <li><a class="text-danger" href="#"><i class="fas fa-square"></i></a></li>
-                                    <li><a class="text-muted" href="#"><i class="fas fa-square"></i></a></li>
-                                </ul>
-                            </div>
-                            <!-- /btn-group -->
-                            <div class="input-group">
-                                <input id="new-event" type="text" class="form-control" placeholder="Event Title">
-
-                                <div class="input-group-append">
-                                    <button id="add-new-event" type="button" class="btn btn-primary">Add</button>
+                        <form action="{{ route('calendar.add') }}" method="get">
+                                <div class="card-body">
+                                    <div class="input-group">
+                                        <input id="new-event" name="event" type="text" class="form-control" placeholder="Название ">
+                                        <div class="input-group-append">
+                                            <button id="add-new-event" type="submit" class="btn btn-primary">Добавить</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <!-- /btn-group -->
-                            </div>
-                            <!-- /input-group -->
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

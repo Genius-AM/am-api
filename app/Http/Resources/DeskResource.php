@@ -17,6 +17,7 @@ class DeskResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'user_id' => $this->user_id,
             'created_at' => $this->created_at,
             'lists' => DeskListResource::collection($this->lists),
         ];

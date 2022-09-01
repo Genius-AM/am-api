@@ -42,7 +42,12 @@
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Должность') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="JobTitle" value="{{ old('JobTtile') }}" required autocomplete="last_name" autofocus>
+
+                                <select name="select">
+                                    @foreach(\App\Models\Role::all() as $role)
+                                        <option id="{{$role->id}}" name="role_id"  value="{{$role->id}}">{{ $role->name }}</option>
+                                    @endforeach
+                                </select>
 
                                 @error('JobTitle')
                                 <span class="invalid-feedback" role="alert">

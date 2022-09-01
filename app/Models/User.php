@@ -24,6 +24,7 @@ class User extends Authenticatable
         'email',
         'JobTitle',
         'password',
+        'phone'
     ];
 
     /**
@@ -45,6 +46,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    //мутатор-mutator
     protected $appends = ['full_name'];
 
     public function getFullNameAttribute()

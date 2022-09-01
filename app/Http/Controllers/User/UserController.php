@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -15,13 +16,14 @@ class UserController extends Controller
         $id = Auth::id();
         $user = User::findOrFail($id);
 
+
         return view('personal', ['user' => $user]);
     }
 
 
-    public function create()
+    public function create(Request $request, User $user)
     {
-        //
+
     }
 
 
@@ -33,7 +35,7 @@ class UserController extends Controller
 
     public function show($id)
     {
-        //
+
     }
 
 
@@ -51,6 +53,8 @@ class UserController extends Controller
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
 
+        Log::info('Update user:',['name' => $user->full_name, 'id' => $user->id]);
+        //$user->avatar = $request->file('image')->store('avatar', 'public');
         $user->update();
 
         return redirect()->back();
@@ -60,5 +64,16 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function uploadAvatar(Request $request, User $user)
+    {
+        $id = Auth::id();
+        $user = User::findOrFail($id);
+        $user->avatar = $request->file('image')->store('avatar', 'public');
+
+        $user->save();
+
+        return redirect()->back();
     }
 }
