@@ -70,11 +70,11 @@ class RegisterController extends Controller
 
        $user->name = $request->input('name');
        $user->last_name = $request->input('last_name');
-       $user->role_id = $request->input('role_id');
+       $user->JobTitle = $request->input('JobTitle');
        $user->email = $request->input('email');
        $user->password = Hash::make( $request->input('password') );
 
-       dd($user);
+
        $user->save();
     }
 }
