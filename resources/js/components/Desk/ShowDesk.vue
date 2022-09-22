@@ -93,8 +93,16 @@
                                             <form @submit.prevent="updateTask(current_card.tasks[index])" v-if="task_input_name_id == task.id">
                                                 <input type="text" v-model="current_card.tasks[index].name" v-if="task_input_name_id == task.id" class="form-control" placeholder="Изменить название tasks">
                                             </form>
+                                            <label v-else class="form-check-label" :for="'inlineCheckbox1' + index">{{task.name}} </label> <span @click="task_input_name_id = task.id" v-if="task_input_name_id != task.id"></span>
+                                            <label class="form-check-label">{{task.description}}</label>
+                                            <i class="fa-solid fa-pencil ml-3 " style="cursor: pointer; font-size: 15px;"></i>
                                             <label v-else class="form-check-label" :for="'inlineCheckbox1' + index">{{task.name}} </label> <span @click="task_input_name_id = task.id" v-if="task_input_name_id != task.id"> <i class="fa-solid fa-pencil ml-3 " style="cursor: pointer; font-size: 15px;"></i></span>
+
+
                                             <button type="button" @click="deleteTask(task.id)" class="btn-close" aria-label="Close"></button>
+                                            <div class="card">
+                                                {{task.description}}
+                                            </div>
                                         </div>
                                         <form @submit.prevent="addNewTask" class="mt-3">
                                             <div class="form-group" >
@@ -113,7 +121,7 @@
                                                     {{errors[0]}}
                                                 </div>
                                             </div>
-                                            <button type="submit" class="btn btn-primary">Отправить</button>
+                                            <button type="submit" class="btn btn-primary mt-2">Отправить</button>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
@@ -169,7 +177,9 @@ export default {
                 _method: 'PATCH',
                 name: task.name,
                 is_done: task.is_done,
-                card_id: task.card_id
+                card_id: task.card_id,
+
+                description_task: task.description
             })
                 .then(response => {
                     this.task_input_name_id = null
@@ -235,7 +245,6 @@ export default {
             axios.get('/api/cards/' + id)
                 .then(response => {
                     this.current_card = response.data.data
-                    console.log(this.current_card)
                 })
                 .catch(error => {
                     console.log(error)

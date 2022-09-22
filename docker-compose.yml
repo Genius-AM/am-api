@@ -1,48 +1,47 @@
-# For more information: https://laravel.com/docs/sail
-version: '3'
+version: "3.7"
+
 services:
-    laravel.test:
+    nginx:
         build:
-            context: ./vendor/laravel/sail/runtimes/8.1
+            context: ./docker/nginx
             dockerfile: Dockerfile
-            args:
-                WWWGROUP: '${WWWGROUP}'
-        image: sail-8.1/app
-        extra_hosts:
-            - 'host.docker.internal:host-gateway'
-        ports:
-            - '${APP_PORT:-80}:80'
-        environment:
-            WWWUSER: '${WWWUSER}'
-            LARAVEL_SAIL: 1
-            XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
-            XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
         volumes:
-            - '.:/var/www/html'
-        networks:
-            - sail
+            - .:/app
+        ports:
+            - '80:80'
+            - '443:443'
+        depends_on:
+            - web
+
+    web:
+        build:
+            context: ./docker/web
+            dockerfile: Dockerfile
+        ports:
+            - '6001:6001'
         depends_on:
             - pgsql
-    pgsql:
-        image: 'postgres:14'
-        ports:
-            - '${FORWARD_DB_PORT:-5432}:5432'
-        environment:
-            PGPASSWORD: '${DB_PASSWORD:-secret}'
-            POSTGRES_DB: '${DB_DATABASE}'
-            POSTGRES_USER: '${DB_USERNAME}'
-            POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+            - redis
         volumes:
-            - 'sail-pgsql:/var/lib/postgresql/data'
-        networks:
-            - sail
-        healthcheck:
-            test: ["CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USERNAME}"]
-            retries: 3
-            timeout: 5s
-networks:
-    sail:
-        driver: bridge
+            - .:/app
+
+    pgsql:
+        image: postgres:13
+        restart: unless-stopped
+        ports:
+            - '5432:5432'
+        volumes:
+            - pgsql_data:/var/lib/postgresql
+        environment:
+            POSTGRES_DB: ${DB_DATABASE}
+            POSTGRES_USER: ${DB_USERNAME}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+    redis:
+        image: redis:6.0
+        volumes:
+            - redis_data:/data
+
 volumes:
-    sail-pgsql:
-        driver: local
+    pgsql_data:
+    redis_data:

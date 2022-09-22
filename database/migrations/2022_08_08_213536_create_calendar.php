@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('tasks', function (Blueprint $table) {
-                $table->boolean('is_done')->default(0);
+        Schema::create('calendars', function (Blueprint $table) {
+            $table->id();
+            $table->string('event');
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->dropColumn('is_done');
-        });
+        Schema::dropIfExists('calendars');
     }
 };
