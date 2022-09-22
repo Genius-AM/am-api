@@ -9,32 +9,36 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="/admin/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="{{asset('admin/plugins/fontawesome-free/css/all.min.css')}}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="/admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="{{asset('admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
     <!-- iCheck -->
-    <link rel="stylesheet" href="/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
     <!-- JQVMap -->
-    <link rel="stylesheet" href="/admin/plugins/jqvmap/jqvmap.min.css">
+    <link rel="stylesheet" href="{{asset('admin/plugins/jqvmap/jqvmap.min.css')}}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="/admin/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="{{asset('admin/dist/css/adminlte.min.css')}}">
 
-    <link rel="stylesheet" href="/admin/dist/css/all.min.css">
+    <link rel="stylesheet" href="{{asset('admin/dist/css/all.min.css')}}">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="{{asset('admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
     <!-- Daterange picker -->
-    <link rel="stylesheet" href="/admin/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="{{asset('admin/plugins/daterangepicker/daterangepicker.css')}}">
     <!-- summernote -->
-    <link rel="stylesheet" href="/admin/plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="{{asset('admin/plugins/summernote/summernote-bs4.min.css')}}">
+
+    <link href='node_modules/fullcalendar-scheduler/main.css' rel='stylesheet' />
+
+    <script src='node_modules/fullcalendar-scheduler/main.js'></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="/admin/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+        <img class="animation__shake" src="{{asset('admin/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
     </div>
 
     <!-- Main Sidebar Container -->
@@ -74,7 +78,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="" class="nav-link active">
+                                <a href="{{route('admin.desks')}}" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Доски</p>
                                 </a>
@@ -113,10 +117,10 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.calendar') }}" class="nav-link">
+                        <a href="{{ url('/calendar') }}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
-                                Widgets
+                                Календарь
                             </p>
                         </a>
                     </li>
@@ -262,19 +266,19 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="/admin/plugins/jquery/jquery.min.js"></script>
+<script src="{{asset('admin/plugins/jquery/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="/admin/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="{{asset('admin/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- ChartJS -->
-<script src="/admin/plugins/chart.js/Chart.min.js"></script>
+<script src="{{asset('admin/plugins/chart.js/Chart.min.js')}}"></script>
 <!-- Sparkline -->
-<script src="/admin/plugins/sparklines/sparkline.js"></script>
+{{--<script src="{{asset('admin/plugins/sparklines/sparkline.js')}}"></script>--}}
 <!-- JQVMap -->
 <script src="/admin/plugins/jqvmap/jquery.vmap.min.js"></script>
 <script src="/admin/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
@@ -292,7 +296,7 @@
 <!-- AdminLTE App -->
 <script src="/admin/dist/js/adminlte.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="/admin/dist/js/pages/dashboard.js"></script>
+{{--<script src="/admin/dist/js/pages/dashboard.js"></script>--}}
 
 <script src = /admin/admin.js></script>
 

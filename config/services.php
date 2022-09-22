@@ -31,4 +31,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'smscru' => [
+        'login' => env('SMS_LOGIN'),
+        'password' => env('SMS_PASSWORD'),
+        'sender' => 'AM-API',
+    ]
+
 ];

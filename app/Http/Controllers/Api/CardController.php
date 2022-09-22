@@ -31,7 +31,6 @@ class CardController extends Controller
     }
 
 
-
     public function update(CardStoreRequest $request, Card $card)
     {
         $card->update($request->validated());

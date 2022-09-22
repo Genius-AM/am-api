@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CalendarController;
 use App\Http\Controllers\Admin\WidgetController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Admin\DeskController;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,20 +25,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::redirect('/', '/index')->middleware('auth');
+Route::redirect('/', '/desks')->middleware('auth');
 
 Route::group(['middleware' => ['role:admin']], function (){
     Route::get('/admin-panel', [AdminController::class , 'index'])->name('admin-panel');
     Route::get('/all-users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users');
     Route::get('/widgets', [WidgetController::class, 'index'])->name('admin.widget');
-    Route::get('admin/desks', [AdminController::class, 'show'])->name('admin.desks');
-    Route::get('/calendar', [CalendarController::class, 'index'])->name('admin.calendar');
+    Route::get('admin/desks', [DeskController::class, 'index'])->name('admin.desks');
+    Route::get('/calendar', [CalendarController::class, 'WithDraw'])->name('admin.calendar');
+    Route::post('/calendar/store', [CalendarController::class, 'storeNewEvent'])->name('calendar.add');
+    Route::put('/calendar/update', [CalendarController::class, 'update'])->name('calendar.update');
 });
 
 Route::prefix('user')->group(function (){
     Route::resource('personal', UserController::class);
+    Route::post('/personal/avatar', [UserController::class, 'uploadAvatar'])->name('avatar.install');
+    Route::get('/des', [App\Http\Controllers\Api\DeskController::class, 'Widg'])->name('des');
+    Route::get('/des/store', [App\Http\Controllers\Api\DeskController::class, 'desk'])
+        ->name('desk.new');
 });
-
 
 
 // Не удалять т.к это используется для построения роутов SPA приложения

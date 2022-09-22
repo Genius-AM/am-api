@@ -15,40 +15,4 @@ class UserController extends Controller
 
         return view('admin.users.index', ['users' => $users]);
     }
-
-
-    public function create()
-    {
-        //
-    }
-
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-
-    public function show()
-    {
-        //
-    }
-
-
-    public function edit()
-    {
-        //
-    }
-
-
-    public function update(Request $request)
-    {
-        //
-    }
-
-
-    public function destroy()
-    {
-        //
-    }
 }
