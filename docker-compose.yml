@@ -1,0 +1,47 @@
+version: "3.7"
+
+services:
+    nginx:
+        build:
+            context: ./docker/nginx
+            dockerfile: Dockerfile
+        volumes:
+            - .:/app
+        ports:
+            - '80:80'
+            - '443:443'
+        depends_on:
+            - web
+
+    web:
+        build:
+            context: ./docker/web
+            dockerfile: Dockerfile
+        ports:
+            - '6001:6001'
+        depends_on:
+            - pgsql
+            - redis
+        volumes:
+            - .:/app
+
+    pgsql:
+        image: postgres:13
+        restart: unless-stopped
+        ports:
+            - '5432:5432'
+        volumes:
+            - pgsql_data:/var/lib/postgresql
+        environment:
+            POSTGRES_DB: ${DB_DATABASE}
+            POSTGRES_USER: ${DB_USERNAME}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+    redis:
+        image: redis:6.0
+        volumes:
+            - redis_data:/data
+
+volumes:
+    pgsql_data:
+    redis_data:

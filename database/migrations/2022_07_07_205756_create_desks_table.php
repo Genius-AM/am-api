@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('desks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('user_id')->constrained();
+            $table->integer('user_id')->constrained();
             $table->timestamps();
         });
     }
